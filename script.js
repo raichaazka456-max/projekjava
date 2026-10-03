@@ -81,6 +81,34 @@ function ambilKartu() {
     animasiKartu("kartuPemain", "kartu-baru");
 }
 
+function cukup() {
+    if (!bermain || komputerAktif) return;
+    komputerAktif = true;
+    komputerTerbuka = true;
+    perbaruiMeja();
+    animasiKartu("kartuKomputer", "kartu-dibuka");
+    document.getElementById("pesanGame").textContent = "Giliran komputer. Kartu yang tertutup dibuka.";
+    waktuTunggu = setTimeout(giliranKomputer, JEDA_KARTU);
+}
+
+function giliranKomputer() {
+    if (!bermain || !komputerAktif) return;
+    waktuTunggu = null;
+    if (hitungNilai(kartuKomputer) < 17) {
+        kartuKomputer.push(ambilAcak());
+        perbaruiMeja();
+        document.getElementById("pesanGame").textContent = "Komputer mengambil kartu. Totalnya sekarang " + hitungNilai(kartuKomputer) + ".";
+        if (hitungNilai(kartuKomputer) < 17) {
+            waktuTunggu = setTimeout(giliranKomputer, JEDA_KARTU);
+        } else {
+            selesaiPermainan();
+        }
+        animasiKartu("kartuKomputer", "kartu-baru");
+    } else {
+        selesaiPermainan();
+    }
+}
+
 
 
 function kembaliMenu() {
