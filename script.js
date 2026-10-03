@@ -25,3 +25,38 @@ function kembaliMenu() {
     document.getElementById("halamanMenu").hidden = false;
     document.getElementById("halamanGame").hidden = true;
 }
+
+function gambarSimbol(jenis, bagian, ukuran) {
+    let besar = "32", kecil = "32";
+    if (bagian === "sudut") { besar = "14"; kecil = "14"; }
+    if (ukuran === "hero") {
+        besar = bagian === "sudut" ? "22_5" : "70";
+    } else if (ukuran === "permainan") {
+        besar = bagian === "sudut" ? "15_75" : "49";
+    } else {
+        kecil = bagian === "sudut" ? "12_6" : "28_8";
+    }
+    return '<picture><source media="(max-width: 700px)" srcset="assets/' + jenis + '-' + kecil + '.svg">' +
+        '<img src="assets/' + jenis + '-' + besar + '.svg" alt=""></picture>';
+}
+
+function buatKartu(kartu, ukuran) {
+    let warna = "hitam";
+    if (kartu.jenis === "heart" || kartu.jenis === "diamond") warna = "merah";
+    let sudut = gambarSimbol(kartu.jenis, "sudut", ukuran);
+    let tengah = gambarSimbol(kartu.jenis, "tengah", ukuran);
+    return '<div class="kartu ' + ukuran + '-kartu ' + warna + '" role="img" aria-label="' + kartu.angka + ' ' + namaJenis[kartu.jenis] + '">' +
+        '<div class="sudut"><span>' + kartu.angka + '</span>' + sudut + '</div>' +
+        '<div class="simbol-tengah">' + tengah + '</div>' +
+        '<div class="sudut bawah">' + sudut + '<span>' + kartu.angka + '</span></div></div>';
+}
+
+function tampilkanKartu(idElemen, daftarKartu, ukuran) {
+    let tampilan = "";
+    for (let i = 0; i < daftarKartu.length; i++) {
+        tampilan += buatKartu(daftarKartu[i], ukuran);
+    }
+    document.getElementById(idElemen).innerHTML = tampilan;
+}
+
+tampilkanKartu("kartuContoh", [{ angka: "A", jenis: "heart" }, { angka: "K", jenis: "spade" }], "hero");
