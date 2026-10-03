@@ -110,7 +110,7 @@ function giliranKomputer() {
 }
 
 function selesaiPermainan() {
-    if (!bermain) return; // Satu ronde hanya boleh dicatat satu kali.
+    if (!bermain) return; 
     clearTimeout(waktuTunggu);
     bermain = false;
     komputerAktif = false;
@@ -165,10 +165,59 @@ function selesaiPermainan() {
     }, JEDA_HASIL);
 }
 
+function tampilkanHalaman(idHalaman) {
+    const halaman = ["halamanMenu", "halamanGame", "halamanHasil"];
+    for (let i = 0; i < halaman.length; i++) {
+        document.getElementById(halaman[i]).hidden = halaman[i] !== idHalaman;
+    }
+    document.getElementById("navigasiMenu").hidden = idHalaman === "halamanMenu";
+    document.getElementById("navigasiPanduan").hidden = idHalaman !== "halamanMenu";
+    document.querySelector("#" + idHalaman + " [tabindex]").focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+}
 
 function kembaliMenu() {
-    document.getElementById("halamanMenu").hidden = false;
-    document.getElementById("halamanGame").hidden = true;
+    clearTimeout(waktuTunggu); 
+    waktuTunggu = null;
+    bermain = false;
+    komputerAktif = false;
+    tampilkanHalaman("halamanMenu");
+}
+
+function perbaruiMeja() {
+    let total = hitungNilai(kartuPemain);
+    tampilkanKartu("kartuPemain", kartuPemain, "permainan");
+    if (komputerTerbuka) {
+        tampilkanKartu("kartuKomputer", kartuKomputer, "permainan");
+        document.getElementById("nilaiKomputer").textContent = "TOTAL " + hitungNilai(kartuKomputer);
+        document.getElementById("statusKomputer").textContent = "Kartu komputer sudah terbuka.";
+    } else {
+       
+        document.getElementById("kartuKomputer").innerHTML = buatKartu(kartuKomputer[0], "permainan") +
+            '<div class="kartu permainan-kartu tertutup" role="img" aria-label="Kartu tertutup"><div class="pola-belakang"><strong>21</strong><small>KARTU 21</small></div></div>';
+        document.getElementById("nilaiKomputer").textContent = nilaiKartu(kartuKomputer[0]) + " + ?";
+        document.getElementById("statusKomputer").textContent = "Satu kartu masih tertutup.";
+    }
+    document.getElementById("nilaiPemain").textContent = "TOTAL " + total;
+    document.getElementById("tombolAmbil").disabled = !bermain || komputerAktif || total >= 21;
+    document.getElementById("tombolCukup").disabled = !bermain || komputerAktif;
+    let pesan = "Totalmu " + total + ". Ambil satu kartu atau cukup?";
+    if (total === 21) pesan = "Pas 21! Pilih Cukup untuk melihat hasil.";
+    document.getElementById("pesanGame").textContent = pesan;
+    perbaruiStatistik();
+}
+
+function animasiKartu(idElemen, namaAnimasi) {
+    let kartu = document.getElementById(idElemen).lastElementChild;
+    kartu.classList.add(namaAnimasi);
+    kartu.scrollIntoView({ block: "nearest" }); // Kartu baru tetap terlihat pada layar HP.
+}
+
+function perbaruiStatistik() {
+    let elemen = document.querySelectorAll("[data-statistik]");
+    for (let i = 0; i < elemen.length; i++) {
+        elemen[i].textContent = "Menang " + menang + " · Kalah " + kalah + " · Seri " + seri;
+    }
 }
 
 function gambarSimbol(jenis, bagian, ukuran) {
