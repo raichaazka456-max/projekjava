@@ -3,37 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TugasKu</title>
+    <title>Kartu 21</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            TugasKu
-        </div>
-
-        <ul class="nav-menu">
-            <li>
-                <a href="dashboard.html" class="halaman">Dashboard</a>
-            </li>
-
-            <li>
-                <a href="">Daftar Tugas</a>
-            </li>
-
-            <li>
-                <a href="">Tambah Tugas</a>
-            </li>
-
-            <li>
-                <a href="">Kalender</a>
-            </li>
-
-            <li>
-               <a href="">About</a> 
-            </li>
-        </ul>
-
-    </nav>    
+    <header class="header wadah">
+        <span class="logo" onclick="KembaliMenu()" aria-label="Kartu 21, Kembali Ke Menu Utama"></span>
+                    <span class="logo-angka">21</span><span>Kartu 21</span>
+        </button>
+        <a id="navigasiPanduan" class="tombol sekunder tombol-nav" href="#caraMain">Cara Main</a>
+        <button id="navigasiMenu" class="tombol sekunder tombol-nav" onclick="kembaliMenu()" hidden>Menu Utama</button>
+    </header>
 </body>
 </html>
+
