@@ -107,6 +107,28 @@
                 </aside>
             </div>
         </section>
+
+        <section id="halamanHasil" class="wadah hasil" aria-labelledby="judulHasil" hidden>
+            <span id="rondeSelesai" class="lencana">RONDE 01 SELESAI</span>
+            <div id="skorHasil" class="skor-hasil" aria-label="Nilai akhirmu">21</div>
+            <h2 id="judulHasil" tabindex="-1">Kamu menang!</h2>
+            <p id="pesanHasil" class="pesan-hasil"></p>
+            <div class="perbandingan">
+                <article id="panelPemain" class="panel tangan pemain">
+                    <div class="judul-kartu"><h3>Kamu</h3><span id="hasilNilaiPemain" class="lencana lencana-aksen"></span></div>
+                    <div id="hasilKartuPemain" class="deretan-kartu"></div>
+                    <p id="rincianPemain" class="rincian kecil"></p>
+                </article>
+                <article id="panelKomputer" class="panel tangan komputer">
+                    <div class="judul-kartu"><h3>Komputer</h3><span id="hasilNilaiKomputer" class="lencana"></span></div>
+                    <div id="hasilKartuKomputer" class="deretan-kartu"></div>
+                    <p id="rincianKomputer" class="rincian kecil"></p>
+                </article>
+            </div>
+            <p class="kecil" data-statistik></p>
+            <div class="aksi-hasil">
+                <button class="tombol utama" onclick="mulaiPermainan()">Main Lagi</button>
+                <button class="tombol sekunder" onclick="kembaliMenu()">Menu Utama</button>
             </div>
         </section>
     </main>
