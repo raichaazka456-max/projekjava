@@ -53,9 +53,35 @@ function hitungNilai(daftarKartu) {
 }
 
 function mulaiPermainan() {
-    document.getElementById("halamanMenu").hidden = true;
-    document.getElementById("halamanGame").hidden = false;
+    clearTimeout(waktuTunggu);
+    waktuTunggu = null;
+    komputerAktif = false;
+    komputerTerbuka = false;
+    document.getElementById("halamanGame").dataset.hasil = "";
+    buatTumpukan();
+    kartuPemain = [ambilAcak(), ambilAcak()];
+    kartuKomputer = [ambilAcak(), ambilAcak()];
+    ronde++;
+    bermain = true;
+    document.getElementById("nomorRonde").textContent = "RONDE " + String(ronde).padStart(2, "0");
+    document.getElementById("tombolCukup").disabled = false;
+    perbaruiMeja();
+    tampilkanHalaman("halamanGame");
 }
+
+function ambilKartu() {
+    if (!bermain || komputerAktif || hitungNilai(kartuPemain) >= 21) return;
+    kartuPemain.push(ambilAcak());
+    perbaruiMeja();
+    if (hitungNilai(kartuPemain) > 21) {
+        selesaiPermainan();
+    } else if (hitungNilai(kartuPemain) === 21) {
+        document.getElementById("tombolCukup").focus();
+    }
+    animasiKartu("kartuPemain", "kartu-baru");
+}
+
+
 
 function kembaliMenu() {
     document.getElementById("halamanMenu").hidden = false;
