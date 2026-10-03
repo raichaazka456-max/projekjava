@@ -28,7 +28,6 @@ function buatTumpukan() {
 
 function ambilAcak() {
     let indeks = Math.floor(Math.random() * tumpukan.length);
-    // splice menghapus kartu yang terambil agar tidak muncul dua kali.
     return tumpukan.splice(indeks, 1)[0];
 }
 
@@ -36,6 +35,21 @@ function nilaiKartu(kartu) {
     if (kartu.angka === "A") return 11;
     if (kartu.angka === "J" || kartu.angka === "Q" || kartu.angka === "K") return 10;
     return Number(kartu.angka);
+}
+
+// As awalnya 11. Jika melewati 21, ubah As menjadi 1 (kurangi 10).
+function hitungNilai(daftarKartu) {
+    let total = 0;
+    let jumlahAs = 0;
+    for (let i = 0; i < daftarKartu.length; i++) {
+        total += nilaiKartu(daftarKartu[i]);
+        if (daftarKartu[i].angka === "A") jumlahAs++;
+    }
+    while (total > 21 && jumlahAs > 0) {
+        total -= 10;
+        jumlahAs--;
+    }
+    return total;
 }
 
 function mulaiPermainan() {
