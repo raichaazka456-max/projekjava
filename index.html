@@ -16,7 +16,7 @@
         <button id="navigasiMenu" class="tombol sekunder tombol-nav" onclick="kembaliMenu()" hidden>Menu Utama</button>
     </header>
     <main>
-                <section id="halamanMenu" class="wadah menu" aria-labelledby="judulMenu">
+        <section id="halamanMenu" class="wadah menu" aria-labelledby="judulMenu">
             <div class="hero">
                 <div class="perkenalan">
                     <p class="label aksen">GAME KARTU · MODE SANTAI</p>
@@ -64,20 +64,31 @@
             </footer>
         </section>
 
-        <section id="halamanGame" class="wadah permainan" hidden>
+        <section id="halamanGame" class="wadah permainan" aria-labelledby="judulGame" hidden>
             <div class="judul-baris">
-                <h2>Meja permainan</h2>
-                <span class="lencana">RONDE 01</span>
+                <h2 id="judulGame" tabindex="-1">Meja permainan</h2>
+                <span id="nomorRonde" class="lencana">RONDE 01</span>
             </div>
-            <div class="meja">
-                <h3>Komputer</h3>
-                <div id="kartuKomputer" class="deretan-kartu">
-                </div>
-                <h3>Kartu Kamu</h3>
-                <div id="kartuPemain" class="deretan-kartu">
+            <div class="susunan-meja">
+                <div class="meja">
+                    <div class="judul-kartu">
+                        <h3>Komputer</h3><span id="nilaiKomputer" class="lencana">? + ?</span>
+                    </div>
+                    <div id="kartuKomputer" class="deretan-kartu" aria-label="Kartu komputer"></div>
+                    <p id="statusKomputer" class="label">Satu kartu masih tertutup.</p>
+                    <div class="pemisah"><span>TARGET 21</span></div>
+                    <div class="judul-kartu">
+                        <h3>Kartu kamu</h3><span id="nilaiPemain" class="lencana lencana-aksen">TOTAL 0</span>
+                    </div>
+                    <div id="kartuPemain" class="deretan-kartu" aria-label="Kartu kamu"></div>
+                    <p id="pesanGame" class="pesan-game" role="status" aria-live="polite">Giliranmu. Ambil satu kartu atau cukup?</p>
+                    <div class="aksi-game">
+                        <button id="tombolAmbil" class="tombol utama" onclick="ambilKartu()">Ambil Kartu</button>
+                        <button id="tombolCukup" class="tombol sekunder" onclick="cukup()">Cukup</button>
+                    </div>
                 </div>
             </div>
-</section>
+        </section>
     </main>
 </body>
 </html>
