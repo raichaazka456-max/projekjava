@@ -210,7 +210,7 @@ function perbaruiMeja() {
 function animasiKartu(idElemen, namaAnimasi) {
     let kartu = document.getElementById(idElemen).lastElementChild;
     kartu.classList.add(namaAnimasi);
-    kartu.scrollIntoView({ block: "nearest" }); // Kartu baru tetap terlihat pada layar HP.
+    kartu.scrollIntoView({ block: "nearest" }); 
 }
 
 function perbaruiStatistik() {
@@ -218,6 +218,22 @@ function perbaruiStatistik() {
     for (let i = 0; i < elemen.length; i++) {
         elemen[i].textContent = "Menang " + menang + " · Kalah " + kalah + " · Seri " + seri;
     }
+}
+
+function rincianNilai(daftarKartu) {
+    let nilai = [];
+    let total = 0;
+    for (let i = 0; i < daftarKartu.length; i++) {
+        nilai.push(nilaiKartu(daftarKartu[i]));
+        total += nilai[i];
+    }
+    for (let i = 0; i < nilai.length; i++) {
+        if (nilai[i] === 11 && total > 21) {
+            nilai[i] = 1;
+            total -= 10;
+        }
+    }
+    return nilai.join(" + ") + " = " + total;
 }
 
 function gambarSimbol(jenis, bagian, ukuran) {

@@ -125,3 +125,20 @@ dt { font-size: 15px; font-weight: 700; }
 dd { margin: 0; font-size: 14px; color: var(--redup); }
 .aturan-komputer { padding-top: 20px; border-top: 1px solid var(--garis); }
 .catatan-sesi h3 { margin-bottom: 12px; }
+
+/* Hasil menang, kalah, dan seri memakai satu layar. */
+.hasil { display: flex; flex-direction: column; align-items: center; gap: 32px; padding-block: 40px 48px; text-align: center; }
+#rondeSelesai { min-width: 180px; }
+.skor-hasil { display: grid; place-items: center; width: 96px; height: 96px; border-radius: 24px; background: var(--aksen); color: var(--tinta); font-size: 48px; line-height: 56px; font-weight: 800; }
+#judulHasil { font-size: 40px; line-height: 48px; font-weight: 800; }
+.pesan-hasil { white-space: pre-line; }
+.perbandingan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; width: min(100%, 1024px); }
+.tangan { display: flex; flex-direction: column; gap: 16px; }
+.tangan.pemain { background: var(--meja); border-color: var(--aksen); }
+.tangan.komputer .lencana { background: var(--latar); }
+.rincian { width: 100%; text-align: center; }
+.aksi-hasil .tombol { width: 240px; }
+[data-hasil="kalah"] .skor-hasil, [data-hasil="kalah"] .pemain .lencana { background: var(--kalah); color: var(--tinta); }
+[data-hasil="kalah"] .pemain { border-color: var(--kalah); }
+[data-hasil="seri"] .skor-hasil, [data-hasil="seri"] .pemain .lencana { background: var(--redup); color: var(--tinta); }
+[data-hasil="seri"] .pemain { border-color: var(--redup); }
