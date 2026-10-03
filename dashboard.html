@@ -9,12 +9,61 @@
 </head>
 <body>
     <header class="header wadah">
-        <span class="logo" onclick="KembaliMenu()" aria-label="Kartu 21, Kembali Ke Menu Utama"></span>
-                    <span class="logo-angka">21</span><span>Kartu 21</span>
+        <button class="logo" onclick="kembaliMenu()" aria-label="Kartu 21, kembali ke menu utama">
+            <span class="logo-angka">21</span><span>Kartu 21</span>
         </button>
         <a id="navigasiPanduan" class="tombol sekunder tombol-nav" href="#caraMain">Cara Main</a>
         <button id="navigasiMenu" class="tombol sekunder tombol-nav" onclick="kembaliMenu()" hidden>Menu Utama</button>
     </header>
+    <main>
+                <section id="halamanMenu" class="wadah menu" aria-labelledby="judulMenu">
+            <div class="hero">
+                <div class="perkenalan">
+                    <p class="label aksen">GAME KARTU · MODE SANTAI</p>
+                    <h1 id="judulMenu" tabindex="-1">Dekati 21.<br>
+                        <span class="teks-desktop">Tentukan langkahmu.</span>
+                        <span class="teks-mobile">Mainkan kartumu.</span>
+                    </h1>
+                    <p class="deskripsi">Ambil kartu atau berhenti. Uji keputusanmu melawan komputer dalam permainan singkat.</p>
+                    <div class="aksi-menu">
+                        <button class="tombol utama" onclick="mulaiPermainan()">Mulai Bermain</button>
+                        <a class="tombol sekunder" href="#caraMain">Lihat Cara Main</a>
+                    </div>
+                    <p class="kecil">1 pemain · Lawan komputer · Poin permainan</p>
+                </div>
+                <div class="ilustrasi">
+                    <p class="label keterangan-ilustrasi">SATU ANGKA. BANYAK KEPUTUSAN.</p>
+                    <div id="kartuContoh" class="deretan-kartu kartu-hero"></div>
+                    <span class="lencana lencana-aksen contoh-nilai">11 + 10 = 21</span>
+                </div>
+            </div>
+
+            <section id="caraMain" class="panduan" aria-labelledby="judulPanduan">
+                <h2 id="judulPanduan">Tiga langkah. Satu target.</h2>
+                <div class="langkah-langkah">
+                    <article class="panel langkah">
+                        <span class="nomor">01</span>
+                        <h3>Dapatkan dua kartu</h3>
+                        <p>Kamu dan komputer memulai dengan dua kartu. Satu kartu komputer masih tertutup.</p>
+                    </article>
+                    <article class="panel langkah">
+                        <span class="nomor">02</span>
+                        <h3>Ambil atau cukup</h3>
+                        <p>Pilih Ambil Kartu untuk menambah satu kartu, atau Cukup untuk mengakhiri giliran.</p>
+                    </article>
+                    <article class="panel langkah">
+                        <span class="nomor">03</span>
+                        <h3>Dekati angka 21</h3>
+                        <p>Nilai lebih tinggi hingga 21 menang. Lebih dari 21 kalah; nilai sama berarti seri.</p>
+                    </article>
+                </div>
+                <p class="kecil">Nilai kartu: 2-10 sesuai angka, J/Q/K = 10, As = 1 atau 11. Komputer mengambil kartu hingga nilainya 17 atau lebih.</p>
+            </section>
+            <footer>
+                <strong>Kartu 21</strong><p>Main santai, asah keputusan.</p>
+            </footer>
+        </section>
+    </main>
 </body>
 </html>
 
