@@ -16,6 +16,28 @@ const namaJenis = { spade: "sekop", heart: "hati", club: "keriting", diamond: "w
 const JEDA_KARTU = 1000; 
 const JEDA_HASIL = 2000; 
 
+// 2. MEMBUAT 52 KARTU, LALU MENGAMBIL SATU SECARA ACAK
+function buatTumpukan() {
+    tumpukan = [];
+    for (let i = 0; i < jenisKartu.length; i++) {
+        for (let j = 0; j < angkaKartu.length; j++) {
+            tumpukan.push({ angka: angkaKartu[j], jenis: jenisKartu[i] });
+        }
+    }
+}
+
+function ambilAcak() {
+    let indeks = Math.floor(Math.random() * tumpukan.length);
+    // splice menghapus kartu yang terambil agar tidak muncul dua kali.
+    return tumpukan.splice(indeks, 1)[0];
+}
+
+function nilaiKartu(kartu) {
+    if (kartu.angka === "A") return 11;
+    if (kartu.angka === "J" || kartu.angka === "Q" || kartu.angka === "K") return 10;
+    return Number(kartu.angka);
+}
+
 function mulaiPermainan() {
     document.getElementById("halamanMenu").hidden = true;
     document.getElementById("halamanGame").hidden = false;
