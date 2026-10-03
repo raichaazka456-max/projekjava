@@ -109,6 +109,61 @@ function giliranKomputer() {
     }
 }
 
+function selesaiPermainan() {
+    if (!bermain) return; // Satu ronde hanya boleh dicatat satu kali.
+    clearTimeout(waktuTunggu);
+    bermain = false;
+    komputerAktif = false;
+    komputerTerbuka = true;
+    perbaruiMeja();
+    let nilaiPemain = hitungNilai(kartuPemain);
+    let nilaiKomputer = hitungNilai(kartuKomputer);
+    let hasil, judul, pesan;
+
+    if (nilaiPemain > 21) {
+        hasil = "kalah";
+        judul = "Melewati 21!";
+        pesan = "Nilaimu melewati batas 21.\nCoba lagi di ronde berikutnya.";
+    } else if (nilaiKomputer > 21 || nilaiPemain > nilaiKomputer) {
+        hasil = "menang";
+        judul = "Kamu menang!";
+        pesan = "Nilaimu lebih tinggi dari komputer.\nSatu kemenangan untukmu!";
+        if (nilaiKomputer > 21) pesan = "Komputer melewati 21.\nSatu kemenangan untukmu!";
+        if (nilaiPemain === 21) judul = "Menang! Pas 21.";
+    } else if (nilaiPemain < nilaiKomputer) {
+        hasil = "kalah";
+        judul = "Belum beruntung.";
+        pesan = "Nilai komputer lebih tinggi.\nCoba keputusan baru di ronde berikutnya.";
+    } else {
+        hasil = "seri";
+        judul = "Sama kuat!";
+        pesan = "Nilaimu sama dengan komputer.\nAyo coba satu ronde lagi.";
+    }
+
+    if (hasil === "menang") menang++;
+    else if (hasil === "kalah") kalah++;
+    else seri++;
+
+    document.getElementById("halamanHasil").dataset.hasil = hasil;
+    document.getElementById("judulHasil").textContent = judul;
+    document.getElementById("pesanHasil").textContent = pesan;
+    document.getElementById("skorHasil").textContent = nilaiPemain;
+    document.getElementById("rondeSelesai").textContent = "RONDE " + String(ronde).padStart(2, "0") + " SELESAI";
+    document.getElementById("hasilNilaiPemain").textContent = nilaiPemain;
+    document.getElementById("hasilNilaiKomputer").textContent = nilaiKomputer;
+    document.getElementById("rincianPemain").textContent = rincianNilai(kartuPemain);
+    document.getElementById("rincianKomputer").textContent = rincianNilai(kartuKomputer);
+    tampilkanKartu("hasilKartuPemain", kartuPemain, "hasil");
+    tampilkanKartu("hasilKartuKomputer", kartuKomputer, "hasil");
+    perbaruiStatistik();
+    document.getElementById("halamanGame").dataset.hasil = hasil;
+    document.getElementById("statusKomputer").textContent = "Nilai akhir komputer: " + nilaiKomputer + ".";
+    document.getElementById("pesanGame").textContent = judul + " Hasil lengkap tampil dalam " + (JEDA_HASIL / 1000) + " detik.";
+    waktuTunggu = setTimeout(function () {
+        waktuTunggu = null;
+        tampilkanHalaman("halamanHasil");
+    }, JEDA_HASIL);
+}
 
 
 function kembaliMenu() {
