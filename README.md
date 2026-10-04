@@ -49,4 +49,4 @@ Aplikasi dibuat menggunakan HTML5, CSS3, dan JavaScript murni tanpa framework. D
 | `index.html` | Struktur Menu Utama, Permainan, dan halaman Hasil. |
 | `style.css` | Mengatur warna, layout, kartu, tombol, animasi, dan responsive design. |
 | `script.js` | Mengatur logika permainan, perhitungan nilai, giliran komputer, dan perubahan tampilan. |
-| `assets/` | Menyimpan ikon dan gambar yang digunakan pada kartu. |
+| `assets` | Menyimpan ikon dan gambar yang digunakan pada kartu. |
