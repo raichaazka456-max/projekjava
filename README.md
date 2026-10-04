@@ -59,3 +59,4 @@ Aplikasi dibuat menggunakan HTML5, CSS3, dan JavaScript murni tanpa framework. D
 3. Buka file index.html menggunakan browser seperti Chrome, Edge, atau Firefox.
 4. Tekan tombol **Mulai Bermain**.
 Project dapat juga dijalankan menggunakan **Live Server** di Visual Studio Code.
+Bisa Juga Tekan Link Di Deveploment
