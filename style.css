@@ -126,7 +126,7 @@ dd { margin: 0; font-size: 14px; color: var(--redup); }
 .aturan-komputer { padding-top: 20px; border-top: 1px solid var(--garis); }
 .catatan-sesi h3 { margin-bottom: 12px; }
 
-/* Hasil menang, kalah, dan seri memakai satu layar. */
+/* Hasil menang, kalah, dan seri  */
 .hasil { display: flex; flex-direction: column; align-items: center; gap: 32px; padding-block: 40px 48px; text-align: center; }
 #rondeSelesai { min-width: 180px; }
 .skor-hasil { display: grid; place-items: center; width: 96px; height: 96px; border-radius: 24px; background: var(--aksen); color: var(--tinta); font-size: 48px; line-height: 56px; font-weight: 800; }
@@ -142,3 +142,70 @@ dd { margin: 0; font-size: 14px; color: var(--redup); }
 [data-hasil="kalah"] .pemain { border-color: var(--kalah); }
 [data-hasil="seri"] .skor-hasil, [data-hasil="seri"] .pemain .lencana { background: var(--redup); color: var(--tinta); }
 [data-hasil="seri"] .pemain { border-color: var(--redup); }
+
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .wadah { width: calc(100% - 64px); }
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    h1 { font-size: 48px; line-height: 56px; }
+    .aksi-menu { flex-wrap: wrap; }
+    .susunan-meja { grid-template-columns: minmax(0, 1fr) 260px; }
+    .kartu-hero { gap: 12px !important; }
+}
+
+/* HP */
+@media (max-width: 700px) {
+    .wadah { width: calc(100% - 40px); }
+    .header { height: 72px; }
+    .tombol-nav { width: 108px; }
+    .teks-desktop, .keterangan-ilustrasi, .kenali-kartu, .petunjuk-cukup { display: none; }
+    .teks-mobile, .nilai-ringkas { display: block; }
+    .menu { padding-top: 24px; }
+    .hero { grid-template-columns: 1fr; gap: 24px; }
+    .perkenalan { gap: 16px; }
+    h1 { max-width: 350px; font-size: 40px; line-height: 48px; letter-spacing: -.5px; }
+    h2 { font-size: 20px; line-height: 28px; }
+    .deskripsi { font-size: 14px; line-height: 22px; }
+    .aksi-menu { flex-direction: column; width: 100%; }
+    .aksi-menu .tombol { width: 100%; }
+    .ilustrasi { padding: 20px; }
+    .kartu-hero { height: 160px; gap: 16px !important; }
+    .contoh-nilai { width: 170px; }
+    .panduan { margin-top: 32px; }
+    .langkah-langkah { grid-template-columns: 1fr; gap: 12px; }
+    footer { flex-direction: column; margin-top: 36px; }
+    .kartu.hero-kartu, .kartu.permainan-kartu { --lebar: 88px; --tinggi: 124px; --padding: 8px; --angka: 18px; border-radius: 12px; }
+    .kartu.hasil-kartu { --lebar: 79.2px; --tinggi: 111.6px; --padding: 7.2px; --angka: 16.2px; border-radius: 10.8px; }
+    .kartu.tertutup { padding: 8px; }
+    .pola-belakang strong { font-size: 28px; }
+    .pola-belakang small { display: none; }
+    .permainan { padding-block: 24px 16px; }
+    .judul-baris { gap: 8px; }
+    .susunan-meja { grid-template-columns: 1fr; }
+    .meja { padding: 16px; }
+    #kartuPemain, .tangan .deretan-kartu { gap: 8px; }
+    .pesan-game { font-size: 14px; line-height: 22px; }
+    .aksi-game .tombol { width: 50%; }
+    .panduan-samping { text-align: center; }
+    .catatan-sesi { padding: 0; border: 0; background: none; }
+    .catatan-sesi h3 { display: none; }
+    .hasil { gap: 24px; padding-block: 24px 32px; }
+    .skor-hasil { width: 80px; height: 80px; }
+    #judulHasil { font-size: 28px; line-height: 36px; font-weight: 700; }
+    .perbandingan { grid-template-columns: 1fr; }
+    .tangan { padding: 16px; }
+    .aksi-hasil { flex-direction: column; width: 100%; }
+    .aksi-hasil .tombol { width: 100%; }
+}
+
+@media (max-width: 350px) {
+    .logo { gap: 8px; font-size: 18px; }
+    .judul-baris h2 { font-size: 18px; }
+    .tombol { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tombol { transition: none; }
+    .kartu-baru, .kartu-dibuka { animation: none; }
+}

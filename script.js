@@ -158,7 +158,7 @@ function selesaiPermainan() {
     perbaruiStatistik();
     document.getElementById("halamanGame").dataset.hasil = hasil;
     document.getElementById("statusKomputer").textContent = "Nilai akhir komputer: " + nilaiKomputer + ".";
-    document.getElementById("pesanGame").textContent = judul + " Hasil lengkap tampil dalam " + (JEDA_HASIL / 1000) + " detik.";
+    document.getElementById("pesanGame").textContent = judul  
     waktuTunggu = setTimeout(function () {
         waktuTunggu = null;
         tampilkanHalaman("halamanHasil");
