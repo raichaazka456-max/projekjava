@@ -42,10 +42,11 @@ Aplikasi dibuat menggunakan HTML5, CSS3, dan JavaScript murni tanpa framework. D
 - Nilai yang paling dekat dengan 21 menjadi pemenang.
 - Jika nilai pemain dan komputer sama, hasilnya seri.
 
-## Struktur Berkas
-```text
-.
-├── index.html
-├── style.css
-├── script.js
-└── assets/
+## Struktur Project
+
+| File | Kegunaan |
+| --- | --- |
+| `index.html` | Struktur Menu Utama, Permainan, dan halaman Hasil. |
+| `style.css` | Mengatur warna, layout, kartu, tombol, animasi, dan responsive design. |
+| `script.js` | Mengatur logika permainan, perhitungan nilai, giliran komputer, dan perubahan tampilan. |
+| `assets/` | Menyimpan ikon dan gambar yang digunakan pada kartu. |
